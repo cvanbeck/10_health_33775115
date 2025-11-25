@@ -1,4 +1,5 @@
 const router = require("express").Router();
+const appointmentRouter = require("./appointments.js");
 
 // All routers get passed through here
 router.get("/", (req, res) => {
@@ -29,26 +30,12 @@ router.get("/dashboard", (req, res, next) => {
     next()
 })
 
-router.get("/appointments", (req, res, next) => {
-    next()
-})
-
-router.get("/appointments/:id", (req, res, next) => {
-    next()
-})
-
-router.post("/addappointment", (req, res, next) => {
-    next()
-})
-
-router.post("/cancelappointment", (req, res, next) => {
-    next()
-})
-
 router.get("/search", (req, res, next) => {
     next()
 })
 
+// External routers
+router.use("/appointments", appointmentRouter)
 
 
 module.exports = router
