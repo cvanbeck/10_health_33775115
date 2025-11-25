@@ -13,12 +13,12 @@ router.get("/:id", (req, res, next) => {
 
 router.get("/add", (req, res, next) => {
     // Page to add new appointment
-    next()
+    res.render("add.ejs")
 })
 
 router.post("/add", (req, res, next) => {
     // Submits to database
-    next()
+    res.send("Appointment added succesful")
 })
 
 router.get("/cancel", (req, res, next) => {
