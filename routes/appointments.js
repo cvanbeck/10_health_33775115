@@ -1,4 +1,4 @@
-appointmentRouter = require("express").Router()
+router = require("express").Router()
 
 
 router.get("/", (req, res, next) => {
@@ -31,4 +31,4 @@ router.put("/cancel", (req, res, next) => {
 })
 
 
-module.exports = appointmentRouter
+module.exports = router
