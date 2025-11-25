@@ -18,9 +18,9 @@ router.post("/loginattempt", (req, res, next) => {
     next()
 })
 
-router.get("/register", (req, res, next => {
-    res.render("register.ejs")
-}))
+router.get("/register", (req, res, next) => {
+    next()
+});
 
 router.post("/registered", (req, res, next) => {
     next()
