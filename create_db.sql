@@ -19,19 +19,17 @@ CREATE TABLE IF NOT EXISTS users (
 );
 
 CREATE TABLE IF NOT EXISTS patients (
-    id              INT AUTO_INCREMENT,
     user_id         INT UNIQUE NOT NULL,
     date_of_birth   DATE NOT NULL,
-    PRIMARY KEY (id),
+    PRIMARY KEY (user_id),
     FOREIGN KEY (user_id) REFERENCES users(id)
 );
 
 CREATE TABLE IF NOT EXISTS doctors (
-    id             INT AUTO_INCREMENT,
-    user_id        INT UNIQUE NOT NULL,
+    d_user_id        INT UNIQUE NOT NULL,
     department_id  INT NOT NULL,
     availability   BIT(7) NOT NULL,
-    PRIMARY KEY(id),
+    PRIMARY KEY(user_id),
     FOREIGN KEY (user_id) REFERENCES users(id),
     FOREIGN KEY (department_id) REFERENCES departments(id)
 );
