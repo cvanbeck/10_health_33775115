@@ -27,7 +27,6 @@ router.post("/add", (req, res, next) => {
 
     db.query(query, record, (err, result) => {
         if (err) return next(err);
-        next()
         res.render('appointment_booked.ejs')
     })
 })
