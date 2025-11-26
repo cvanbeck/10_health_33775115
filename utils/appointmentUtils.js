@@ -30,7 +30,6 @@ function renderAppointments(res, next, id = -1) {
 
     // Check if an id was specified, if so selects only that item 
     query += id === -1 ? "" : `\n WHERE appointments.id = ?`;
-    console.log(query)
     db.query(query, id, (err, result) => {
         if (err) return next(err);
         res.render("appointments.ejs", { appointments: result });
