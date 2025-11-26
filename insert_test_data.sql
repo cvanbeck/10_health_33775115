@@ -11,7 +11,7 @@ INSERT INTO users (email, username, hashed_password, account_type, first_name, l
 VALUES (
     "goldsmiths@ac.uk",
     "gold",
-    "$2y$10$6SqHWzekgrDWprWW9N8ms.q.7q9FCKBv4Y1Bono8UTdLUdWLcGDpS",
+    "$2b$10$tQMzC1EzqoFV53zMr7JTyOQ17bs4JO4U1w1RFMb55H23yz3yr3/4C",
     "doctor",
     "gold",
     "smiths"
@@ -28,7 +28,7 @@ INSERT INTO users (email, username, hashed_password, account_type, first_name, l
 VALUES (
     "secondDoc@ac.uk",
     "Second",
-    "$2y$10$6SqHWzekgrDWprWW9N8ms.q.7q9FCKBv4Y1Bono8UTdLUdWLcGDpS",
+    "$2b$10$tQMzC1EzqoFV53zMr7JTyOQ17bs4JO4U1w1RFMb55H23yz3yr3/4C",
     "doctor",
     "Dr.",
     "Acula"
@@ -45,7 +45,7 @@ INSERT INTO users (email, username, hashed_password, account_type, first_name, l
 VALUES (
     "anotherDoc@ac.uk",
     "Third",
-    "$2y$10$6SqHWzekgrDWprWW9N8ms.q.7q9FCKBv4Y1Bono8UTdLUdWLcGDpS",
+    "$2b$10$tQMzC1EzqoFV53zMr7JTyOQ17bs4JO4U1w1RFMb55H23yz3yr3/4C",
     "doctor",
     "Emma",
     "Royd"
@@ -62,7 +62,7 @@ INSERT INTO users (email, username, hashed_password, account_type, first_name, l
 VALUES (
     "patient@ac.uk",
     "illMan",
-    "$2y$10$6SqHWzekgrDWprWW9N8ms.q.7q9FCKBv4Y1Bono8UTdLUdWLcGDpS",
+    "$2b$10$tQMzC1EzqoFV53zMr7JTyOQ17bs4JO4U1w1RFMb55H23yz3yr3/4C",
     "pat",
     "Im",
     "Ill"
@@ -78,7 +78,7 @@ INSERT INTO users (email, username, hashed_password, account_type, first_name, l
 VALUES (
     "anotherPatient@ac.uk",
     "badHeadache",
-    "$2y$10$6SqHWzekgrDWprWW9N8ms.q.7q9FCKBv4Y1Bono8UTdLUdWLcGDpS",
+    "$2b$10$tQMzC1EzqoFV53zMr7JTyOQ17bs4JO4U1w1RFMb55H23yz3yr3/4C",
     "pat",
     "Help",
     "Me"
@@ -94,7 +94,7 @@ INSERT INTO users (email, username, hashed_password, account_type, first_name, l
 VALUES (
     "oneMore@ac.uk",
     "DyingMan",
-    "$2y$10$6SqHWzekgrDWprWW9N8ms.q.7q9FCKBv4Y1Bono8UTdLUdWLcGDpS",
+    "$2b$10$tQMzC1EzqoFV53zMr7JTyOQ17bs4JO4U1w1RFMb55H23yz3yr3/4C",
     "pat",
     "Lotsof",
     "Vomit"
