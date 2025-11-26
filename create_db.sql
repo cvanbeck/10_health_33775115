@@ -26,7 +26,7 @@ CREATE TABLE IF NOT EXISTS patients (
 );
 
 CREATE TABLE IF NOT EXISTS doctors (
-    d_user_id        INT UNIQUE NOT NULL,
+    user_id        INT UNIQUE NOT NULL,
     department_id  INT NOT NULL,
     availability   BIT(7) NOT NULL,
     PRIMARY KEY(user_id),
