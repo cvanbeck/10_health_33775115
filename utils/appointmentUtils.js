@@ -2,11 +2,13 @@ function seperateUsersByRole(users) {
     // Seperates given table based on account_type field
     let seperated = {};
     users.forEach(user => {
-        if (!(user.account_type in seperated)) {
+        let key = `${user.account_type}s`
+        console.log(seperated)
+        if (!(key in seperated)) {
             // Adds new array with same key as account_type value
-            seperated[`${user.account_type}s`] = [];
+            seperated[key] = [];
         }
-        seperated[`${user.account_type}s`].push(user);
+        seperated[key].push(user);
     });
     return seperated;
 }

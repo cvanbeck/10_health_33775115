@@ -12,7 +12,6 @@ router.get("/add", (req, res, next) => {
     
     db.query(query, (err, result) => {
         if (err) return next(err);
-
         let info = seperateUsersByRole(result)
         res.render("add.ejs", { patients : info.pats, doctors : info.doctors })
     })
