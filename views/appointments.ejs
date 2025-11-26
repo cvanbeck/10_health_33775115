@@ -11,8 +11,8 @@
     <h1>All appointments</h1>
     <% appointments.forEach(appointment => {%>
         <ul>
-            <li>Patient Name:<%=appointment.pfirst %> <%=appointment.plast %> </li>
-            <li>Doctor Name: Dr. <%=appointment.dfirst %> <%=appointment.dlast %>, <%=appointment.department %> department</li>
+            <li>Patient Name: <%=appointment.pfirst %> <%=appointment.plast %> </li>
+            <li>Doctor Name: <%=appointment.dfirst %> <%=appointment.dlast %>, <%=appointment.department %> department</li>
             <li>Appointment is at: <%=appointment.time.slice(0, 5) %> on <%=appointment.date.toString().slice(0, 10) %></li>
         </ul>
     <%})%>
