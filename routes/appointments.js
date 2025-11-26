@@ -1,9 +1,30 @@
 router = require("express").Router()
 
 
+// List all appointments
 router.get("/", (req, res, next) => {
-    // List all appointments
-    next()
+    // This query grabs a bunch of data and inner joins it all to make a joint table
+    // Is there a better way to do this?? idk
+    let query = `
+        SELECT
+            appointments.id,
+            appointments.time,
+            appointments.date,
+            p.first_name AS pfirst,
+            p.last_name AS plast,
+            d.first_name AS dfirst,
+            d.last_name AS dlast,
+            departments.name AS department
+        FROM appointments
+            INNER JOIN users as p ON appointments.patient_id = p.id
+            INNER JOIN users as d ON appointments.doctor_id = d.id
+            INNER JOIN doctors ON appointments.doctor_id = doctors.user_id
+            INNER JOIN departments ON doctors.department_id = departments.id;
+    `
+    db.query(query, (err, result) => {
+        if(err) return next(err);
+        res.render("appointments.ejs", { appointments: result })
+    })
 })
 
 router.get("/:id", (req, res, next) => {
