@@ -3,9 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <link rel="stylesheet"  type="text/css" href="/main.css" />
+    <title>Add appointment</title>
 </head>
 <body>
+    <%-include('header') %>
+
+    <h1>Add appointment</h1>
     <form action="./add" method="post">
         <label for="patient">Select Patient:</label>
         <select name="patient" id="patient">
