@@ -3,7 +3,6 @@ function seperateUsersByRole(users) {
     let seperated = {};
     users.forEach(user => {
         let key = `${user.account_type}s`
-        console.log(seperated)
         if (!(key in seperated)) {
             // Adds new array with same key as account_type value
             seperated[key] = [];
@@ -30,8 +29,8 @@ function renderAppointments(res, next, id = -1) {
                     INNER JOIN departments ON doctors.department_id = departments.id`;
 
     // Check if an id was specified, if so selects only that item 
-    query += id === -1 ? "" : `WHERE appointments.id = ?`;
-
+    query += id === -1 ? "" : `\n WHERE appointments.id = ?`;
+    console.log(query)
     db.query(query, id, (err, result) => {
         if (err) return next(err);
         res.render("appointments.ejs", { appointments: result });
