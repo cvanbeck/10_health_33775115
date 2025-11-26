@@ -1,6 +1,6 @@
 const router = require("express").Router();
 const appointmentRouter = require("./appointments.js");
-const authorisationRouter = require("./authorisation.js")
+const authenticationRouter = require("./authentication.js")
 
 
 router.get("/", (req, res) => {
@@ -11,7 +11,9 @@ router.get("/about", (req, res, next) => {
     next();
 });
 
-router.use("/auth", authorisationRouter)
+router.use("/auth", authenticationRouter)
+
+// All routers from here onwards require authe
 
 router.use("/appointments", appointmentRouter)
 
