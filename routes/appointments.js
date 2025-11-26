@@ -14,18 +14,17 @@ router.get("/add", (req, res, next) => {
         if (err) return next(err);
 
         let info = seperateUsersByRole(result)
-        console.log(info)
         res.render("add.ejs", { patients : info.pats, doctors : info.doctors })
     })
 })
 
 // Submits to database
 router.post("/add", (req, res, next) => {
-    let record = [req.body.patient, req.body.doctor]
+    let record = [req.body.patient, req.body.doctor, req.body.time, req.body.date]
     query = `INSERT INTO appointments 
                 (patient_id, doctor_id, time, date)
             VALUES
-                (?, ?, CURTIME(), CURDATE())`
+                (?, ?, ?, ?)`
 
     db.query(query, record, (err, result) => {
         if (err) return next(err);
