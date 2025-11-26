@@ -4,8 +4,8 @@ INSERT INTO departments
     (name)
 VALUES 
     ("Cardiology"),
-    ("Pediatrics"),
-    ("Radiology");
+    ("Phlebotomy"),
+    ("Gastroenterology");
 
 INSERT INTO users (email, username, hashed_password, account_type, first_name, last_name)
 VALUES (
@@ -30,7 +30,7 @@ VALUES (
     "Second",
     "$2y$10$We22BggEZvgoGz/yoeVfWeL1IVmH3GJl8YfhuPZ/ccLbjmLME91BG",
     "doctor",
-    "Dr",
+    "Dr.",
     "Acula"
 );
 
