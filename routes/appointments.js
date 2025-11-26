@@ -50,7 +50,7 @@ router.post("/add", (req, res, next) => {
         console.log(result)
         if (err) return next(err);
         next()
-        res.send(`Appointment succesfully added`)
+        res.render('appointment_booked.ejs')
     })
 })
 
