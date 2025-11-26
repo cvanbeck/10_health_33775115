@@ -13,7 +13,15 @@ router.get("/about", (req, res, next) => {
 
 router.use("/auth", authenticationRouter)
 
-// All routers from here onwards require authe
+// All routers from here onwards require authentication
+// Basic authorisation check
+router.use((req, res, next) => {
+    if(authorisation=true){
+        next()
+    } else {
+        res.send("NOT LOGGED IN")
+    }
+})
 
 router.use("/appointments", appointmentRouter)
 
