@@ -12,7 +12,7 @@ function seperateUsersByRole(users) {
     return seperated;
 }
 
-function getAppointments(req, res, next, id, callback) {
+function getAppointments(req, next, id, callback) {
     let query = `SELECT
                     appointments.id,
                     appointments.time,
@@ -29,12 +29,20 @@ function getAppointments(req, res, next, id, callback) {
                     INNER JOIN users as d ON appointments.doctor_id = d.id
                     INNER JOIN doctors ON appointments.doctor_id = doctors.user_id
                     INNER JOIN departments ON doctors.department_id = departments.id
-                WHERE 
-                    (appointments.patient_id = ? OR appointments.doctor_id = ?`;
-    // Check if an id was specified, if so selects only that item 
-    query += id === -1 ? ")" : ` AND appointments.id = ?)`;
-    
-    const values = [req.session.user_id, req.session.user_id, id]
+                WHERE 1=1`;
+
+    const values = [];
+
+    // If id === -1 then return all appointments for the current user
+    if (id === -1) {
+        query += ` AND (appointments.patient_id = ? OR appointments.doctor_id = ?)`;
+        values.push(req.session.user_id, req.session.user_id);
+    } else {
+        // When id is specified, only return if the user is either the doctor or patient
+        query += ` AND appointments.id = ? AND (appointments.patient_id = ? OR appointments.doctor_id = ?)`;
+        values.push(id, req.session.user_id, req.session.user_id);
+    }
+
     db.query(query, values, (err, result) => {
         if (err) return next(err);
         callback(result);
