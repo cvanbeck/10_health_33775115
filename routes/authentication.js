@@ -1,8 +1,7 @@
 const router = require("express").Router()
 const bcrypt = require("bcrypt")
+const config = require("../utils/config")
 const redirectLogin = require("../utils/authenticationHelpers")
-
-
 
 
 router.get("/login", (req, res, next) => {
@@ -42,11 +41,44 @@ router.get("/logout", redirectLogin, (req, res) => {
 })
 
 router.get("/register", (req, res, next) => {
-    next()
+    res.render("register.ejs")
 });
 
-router.post("/register", (req, res, next) => {
-    next()
+router.post("/registered", (req, res, next) => {
+    bcrypt.hash(req.body.password, 10, (err, hashed_password) => {
+        if(err){ 
+            console.log("ERROR")
+            return res.send(err) 
+        }
+        let query1 = `
+            INSERT INTO users 
+                (email, username, hashed_password, account_type, first_name, last_name)
+            VALUES(?, ?, ?, ?, ?, ?)
+        `
+
+        let newRecord = [
+            req.body.email,
+            req.body.username,
+            hashed_password,
+            "pat",
+            req.body.first,
+            req.body.last
+        ]
+
+        db.query(query1, newRecord, (err, result) => {
+            if (err){ return res.send(err)}
+            let query2 = `
+                INSERT INTO patients (user_id, date_of_birth)
+                VALUES(LAST_INSERT_ID(), ?)
+            `
+            db.query(query2, req.body.dob, (err2, result2) => {
+                if (err2){
+                    return res.send(err2)
+                }
+                res.send('You have now registered. <a href='+'../'+'>Home</a>')
+            })
+        })
+    })
 });
 
 
