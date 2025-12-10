@@ -17,6 +17,7 @@ function getAppointments(req, res, next, id, callback) {
                     appointments.id,
                     appointments.time,
                     appointments.date,
+                    appointments.is_cancelled,
                     p.first_name AS pfirst,
                     p.last_name AS plast,
                     d.first_name AS dfirst,
