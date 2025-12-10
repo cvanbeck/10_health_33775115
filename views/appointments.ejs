@@ -14,7 +14,7 @@
             <input type="hidden" name="id"  value="<%=appointment.id %>">
             <li>Patient Name: <%=appointment.pfirst %> <%=appointment.plast %> </li>
             <li>Doctor Name: <%=appointment.dfirst %> <%=appointment.dlast %>, <%=appointment.department %> department</li>
-            <li>Appointment is at: <%=appointment.time.slice(0, 5) %> on <%=appointment.date.toString().slice(0, 10) %></li>
+            <li>Appointment is at: <%=appointment.time.slice(0, 5) %> on <%=appointment.date.toString().slice(4, 15) %></li>
             
             <% if(appointment.is_cancelled){ %>
                <li><b>Appointment has been cancelled</b></li> 

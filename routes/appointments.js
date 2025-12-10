@@ -13,7 +13,7 @@ router.get("/add", (req, res, next) => {
     db.query(query, (err, users) => {
         if (err) return next(err);
         let seperated = seperateUsersByRole(users)
-        res.render("add.ejs", { patients : seperated.pat, doctors : seperated.doctor })
+        res.render("add.ejs", { user_id : req.session.user_id, patients: seperated.pat, doctors : seperated.doctor })
     })
 })
 
@@ -27,14 +27,16 @@ router.post("/add", (req, res, next) => {
 
     db.query(query, record, (err, result) => {
         if (err) { return next(err) }
-        res.render('appointment_booked.ejs')
+        res.render('appointment_booked.ejs', {record: record})
     })
 })
 
 // Updates appointment to cancelled
 router.post("/cancel", (req, res, next) => {
     cancelAppointment(req.body.id, () => {
-        getAppointments(req, res, next, req.body.id, ( appointments ) => {
+        getAppointments(req, next, req.body.id, ( appointments ) => {
+            console.log(req.body.id)
+            console.log(appointments)
             res.render("cancelled.ejs", { appointments })
         })
     })
@@ -42,7 +44,7 @@ router.post("/cancel", (req, res, next) => {
 
 router.post("/attended", (req, res, next) => {
     appointmentAttended(req.body.id, () => {
-        getAppointments(req, res, next, req.body.id, ( appointments ) => {
+        getAppointments(req, next, req.body.id, ( appointments ) => {
             res.render("attended.ejs", { appointments })
         })
     })
@@ -75,14 +77,14 @@ router.get('/search_result', function (req, res, next) {
 
 // List all appointments
 router.get("/", (req, res, next) => {
-    getAppointments(req, res, next, -1, (appointments) => {
+    getAppointments(req, next, -1, (appointments) => {
         res.render("appointments.ejs", { appointments })
     })
 })
 
 // List a specific one
 router.get("/:id", (req, res, next) => {
-    getAppointments(req, res, next, req.params.id, (appointments) => {
+    getAppointments(req, next, req.params.id, (appointments) => {
         res.render("appointments.ejs", { appointments })
     })
 })

@@ -11,21 +11,23 @@
 
     <h1>Add appointment</h1>
     <form action="./add" method="post">
-        <label for="patient">Select Patient:</label>
-        <select name="patient" id="patient">
-        <% patients.forEach(patient => { %>
-            <option value="<%= patient.id %>"><%= patient.first_name %> <%= patient.last_name %></option>
+        <% if (account_type === "pat"){ %>
+            <input type="hidden" name="patient"  value="<%=user_id %>">
+            <label for="doctor">Select Doctor:</label>
+            <select name="doctor" id="doctor">
+                <% doctors.forEach(doctor => { %>
+                    <option value="<%= doctor.id %>"><%= doctor.first_name %> <%= doctor.last_name %></option>    
+                <% }) %>    
+            </select>                
+        <% }else if (account_type === "doctor"){ %>
+            <input type="hidden" name="doctor"  value="<%=user_id %>">    
+            <label for="patient">Select Patient:</label>
+            <select name="patient" id="patient">
+            <% patients.forEach(patient => { %>
+                <option value="<%= patient.id %>"><%= patient.first_name %> <%= patient.last_name %></option>
             <% }) %>
-        </select>
-
-        <br>
-
-        <label for="doctor">Select Doctor:</label>
-        <select name="doctor" id="doctor">
-        <% doctors.forEach(doctor => { %>
-            <option value="<%= doctor.id %>"><%= doctor.first_name %> <%= doctor.last_name %></option>
-        <% }) %>
-        </select>
+            </select>
+        <% } %>
 
         <br>
 
