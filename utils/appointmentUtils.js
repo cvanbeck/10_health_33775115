@@ -1,8 +1,8 @@
+// Seperates given table based on account_type field
 function seperateUsersByRole(users) {
-    // Seperates given table based on account_type field
-    let seperated = {};
+    const seperated = {};
     users.forEach(user => {
-        let key = `${user.account_type}s`
+        const key = user.account_type
         if (!(key in seperated)) {
             // Adds new array with same key as account_type value
             seperated[key] = [];
@@ -30,6 +30,7 @@ function renderAppointments(res, next, id = -1) {
 
     // Check if an id was specified, if so selects only that item 
     query += id === -1 ? "" : `\n WHERE appointments.id = ?`;
+    
     db.query(query, id, (err, result) => {
         if (err) return next(err);
         res.render("appointments.ejs", { appointments: result });

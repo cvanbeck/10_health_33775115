@@ -10,23 +10,23 @@ router.get("/add", (req, res, next) => {
                     LEFT JOIN doctors ON users.id = doctors.user_id
                     LEFT JOIN departments ON doctors.department_id = departments.id;`
     
-    db.query(query, (err, result) => {
+    db.query(query, (err, users) => {
         if (err) return next(err);
-        let info = seperateUsersByRole(result)
-        res.render("add.ejs", { patients : info.pats, doctors : info.doctors })
+        let seperated = seperateUsersByRole(users)
+        res.render("add.ejs", { patients : seperated.pat, doctors : seperated.doctor })
     })
 })
 
 // Submits to database
 router.post("/add", (req, res, next) => {
     let record = [req.body.patient, req.body.doctor, req.body.time, req.body.date]
-    query = `INSERT INTO appointments 
-                (patient_id, doctor_id, time, date)
-            VALUES
-                (?, ?, ?, ?)`
+    let query = `INSERT INTO appointments 
+                    (patient_id, doctor_id, time, date)
+                VALUES
+                    (?, ?, ?, ?)`
 
     db.query(query, record, (err, result) => {
-        if (err) return next(err);
+        if (err) { return next(err) }
         res.render('appointment_booked.ejs')
     })
 })
