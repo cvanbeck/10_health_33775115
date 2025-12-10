@@ -49,5 +49,5 @@ CREATE TABLE IF NOT EXISTS appointments (
 );
 
 
-CREATE USER IF NOT EXISTS "health"@"localhost" IDENTIFIED BY "qwertyuiop";
-GRANT ALL PRIVILEGES ON health.* TO "health"@"localhost"; 
+CREATE USER IF NOT EXISTS "health_app"@"localhost" IDENTIFIED BY "qwertyuiop";
+GRANT ALL PRIVILEGES ON health.* TO "health_app"@"localhost"; 
