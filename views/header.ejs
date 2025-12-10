@@ -1,11 +1,10 @@
 <a href="/">Home</a>
-<a href="">About</a>
+<a href="/about">About</a>
 <% if(!account_type){ %>
     <a href="/auth/login">Login</a>
     <a href="/auth/register">Register</a>
 <% }%>
 <% if(account_type){ %>
-    <!-- Debug only, remove before finished -->
     <a href="/appointments">Appointments</a>
     <a href="/appointments/add">Create new appointment</a>    
     <a href="/appointments/search">Search for Doctors</a>

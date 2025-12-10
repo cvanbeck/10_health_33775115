@@ -7,12 +7,19 @@
     <link rel="stylesheet"  type="text/css" href="/main.css" />
 </head>
 <body>
-    <%-include('header') %>
-    <h1>Welcome to <%=surgery.name%>'s Appointment Service</h1>
-    <p><a href="/auth/login">Login</a></p>
-    <p><a href="">Register</a></p>
-    <p><a href="">About</a></p>
-    <!-- Debug only, remove before finished -->
-    <p><a href="/appointments/add">Create new appointment</a></p>
+    <h1>Welcome to Goldsmith Surgeries' Appointment Service</h1>
+    <p><a href="/about">About</a></p>
+    <% if(!account_type){ %>
+        <p><a href="/auth/login">Login</a></p>
+        <p><a href="/auth/register">Register</a></p>
+    <% }%>
+    <% if(account_type){ %>
+        <!-- Debug only, remove before finished -->
+        <p><a href="/appointments">Appointments</a></p>
+        <p><a href="/appointments/add">Create new appointment</a>  </p>  
+        <p><a href="/appointments/search">Search for Doctors</a></p>
+        <p><a href="/auth/logout">Logout</a></p>
+    <% }%>
+<br>
 </body>
 </html>

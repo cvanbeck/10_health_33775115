@@ -4,6 +4,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
+    "forever": "forever stopall && forever start index.js && forever list",
     "start": "node index.js"
   },
   "author": "",

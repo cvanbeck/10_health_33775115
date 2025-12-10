@@ -9,8 +9,9 @@ router.get("/", (req, res) => {
 });
 
 router.get("/about", (req, res, next) => {
-    next();
+    res.render("about.ejs");
 });
+
 
 router.use("/auth", authenticationRouter)
 
