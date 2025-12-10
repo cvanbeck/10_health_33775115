@@ -1,5 +1,5 @@
 router = require("express").Router()
-const { seperateUsersByRole, getAppointments, cancelAppointment } = require("../utils/appointmentUtils.js")
+const { seperateUsersByRole, getAppointments, cancelAppointment, appointmentAttended } = require("../utils/appointmentUtils.js")
 
 
 // Page to add new appointment
@@ -36,6 +36,14 @@ router.post("/cancel", (req, res, next) => {
     cancelAppointment(req.body.id, () => {
         getAppointments(req, res, next, req.body.id, ( appointments ) => {
             res.render("cancelled.ejs", { appointments })
+        })
+    })
+})
+
+router.post("/attended", (req, res, next) => {
+    appointmentAttended(req.body.id, () => {
+        getAppointments(req, res, next, req.body.id, ( appointments ) => {
+            res.render("attended.ejs", { appointments })
         })
     })
 })

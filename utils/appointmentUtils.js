@@ -18,6 +18,7 @@ function getAppointments(req, res, next, id, callback) {
                     appointments.time,
                     appointments.date,
                     appointments.is_cancelled,
+                    appointment_attended,
                     p.first_name AS pfirst,
                     p.last_name AS plast,
                     d.first_name AS dfirst,
@@ -52,4 +53,16 @@ const cancelAppointment = (id, callback) => {
     })
 }
 
-module.exports = {seperateUsersByRole, getAppointments, cancelAppointment}
+const appointmentAttended = (id, callback) => {
+    let query = `
+        UPDATE appointments
+        SET appointment_attended = 1
+        WHERE id = ?
+    `
+    db.query(query, id, (err, result) => {
+        if (err) return next(err);
+        callback()
+    })
+}
+
+module.exports = {seperateUsersByRole, getAppointments, cancelAppointment, appointmentAttended}
