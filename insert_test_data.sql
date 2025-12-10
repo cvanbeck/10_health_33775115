@@ -1,4 +1,4 @@
-USE appointment_booking;
+USE health;
 
 INSERT INTO departments
     (name)
@@ -11,7 +11,7 @@ INSERT INTO users (email, username, hashed_password, account_type, first_name, l
 VALUES (
     "goldsmiths@ac.uk",
     "gold",
-    "$2b$10$tQMzC1EzqoFV53zMr7JTyOQ17bs4JO4U1w1RFMb55H23yz3yr3/4C",
+    "$2b$10$KLT3MBKYuMvLoyvryPn3huDEwhqpvdqZSzVx1LL4Hv49q6g7cdEn2",
     "doctor",
     "gold",
     "smiths"

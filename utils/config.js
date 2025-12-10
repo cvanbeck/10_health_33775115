@@ -2,10 +2,10 @@ require("dotenv").config();
 
 const PORT = process.env.PORT || 8000;
 
-const DB_HOST = process.env.DB_HOST;
-const DB_USER = process.env.DB_USER;
-const DB_PASSWORD = process.env.DB_PASSWORD;
-const DB_NAME = process.env.DB_NAME;
+const DB_HOST = process.env.HEALTH_HOST;
+const DB_USER = process.env.HEALTH_USER;
+const DB_PASSWORD = process.env.HEALTH_PASSWORD;
+const DB_NAME = process.env.HEALTH_NAME;
 
 //- Do I need to hide saltrounds?
 const SALT_ROUNDS = process.env.SALT_ROUNDS;

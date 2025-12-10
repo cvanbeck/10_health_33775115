@@ -1,5 +1,5 @@
-CREATE DATABASE IF NOT EXISTS appointment_booking;
-USE appointment_booking;
+CREATE DATABASE IF NOT EXISTS health;
+USE health;
 
 CREATE TABLE IF NOT EXISTS departments (
     id      INT AUTO_INCREMENT,
@@ -49,5 +49,5 @@ CREATE TABLE IF NOT EXISTS appointments (
 );
 
 
-CREATE USER IF NOT EXISTS "appointment_booking_app"@"localhost" IDENTIFIED BY "qwertyuiop";
-GRANT ALL PRIVILEGES ON appointment_booking.* TO "appointment_booking_app"@"localhost"; 
+CREATE USER IF NOT EXISTS "health"@"localhost" IDENTIFIED BY "qwertyuiop";
+GRANT ALL PRIVILEGES ON health.* TO "health_booking_app"@"localhost"; 
