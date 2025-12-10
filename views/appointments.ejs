@@ -7,7 +7,7 @@
     <title>Appointments</title>
 </head>
 <body>
-    <%-include("header") %>
+    <%- include("header") %>
     <h1>All appointments</h1>
     <% appointments.forEach(appointment => {%>
         <form action="appointments/cancel" method="POST">
@@ -15,7 +15,17 @@
             <li>Patient Name: <%=appointment.pfirst %> <%=appointment.plast %> </li>
             <li>Doctor Name: <%=appointment.dfirst %> <%=appointment.dlast %>, <%=appointment.department %> department</li>
             <li>Appointment is at: <%=appointment.time.slice(0, 5) %> on <%=appointment.date.toString().slice(0, 10) %></li>
-            <input type="submit" value="Cancel Appointment" />
+            
+            <% if(appointment.is_cancelled){ %>
+               <li><b>Appointment has been cancelled</b></li> 
+            <% } else if(appointment.appointment_attended){ %>
+                <li><b>Appointment was attended</b></li> 
+            <% } else { %>
+                <input type="submit" value="Cancel Appointment" />
+                <% if(account_type === "doctor"){ %>
+                <input type="submit" formaction="/appointments/attended" value="Appointment Attended" />
+                <% } %>
+            <% } %>
         </form>
         <br>
     <%})%>

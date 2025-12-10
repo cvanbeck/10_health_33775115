@@ -9,5 +9,12 @@
 <body>
     <%-include("header") %>
     <h1>You have cancelled the following appointment</h1>
+        <% appointments.forEach(appointment => {%>
+            <li>Patient Name: <%=appointment.pfirst %> <%=appointment.plast %> </li>
+            <li>Doctor Name: <%=appointment.dfirst %> <%=appointment.dlast %>, <%=appointment.department %> department</li>
+            <li>Appointment at: <%=appointment.time.slice(0, 5) %> on <%=appointment.date.toString().slice(0, 10) %></li>
+        </form>
+        <br>
+    <%})%>
 </body>
 </html>

@@ -40,7 +40,7 @@ function getAppointments(req, res, next, id, callback) {
     });
 }
 
-const cancelAppointment = (req, res, next, id, callback) => {
+const cancelAppointment = (id, callback) => {
     let query = `
         UPDATE appointments
         SET is_cancelled = 1

@@ -33,9 +33,10 @@ router.post("/add", (req, res, next) => {
 
 // Updates appointment to cancelled
 router.post("/cancel", (req, res, next) => {
-    console.log(req.body.id)
-    cancelAppointment(next, req.body.id, () => {
-        res.render("cancelled.ejs")
+    cancelAppointment(req.body.id, () => {
+        getAppointments(req, res, next, req.body.id, ( appointments ) => {
+            res.render("cancelled.ejs", { appointments })
+        })
     })
 })
 
