@@ -26,9 +26,9 @@ router.post("/login", (req, res, next) => {
                 req.session.account_type = result[0].account_type
                 // Makes account_type available in all ejs templates
                 res.locals.account_type = req.session.account_type;
-                res.send("Login Successful")
+                res.send('Login Successful. Return  <a href='+'../'+'>Home</a>')
             } else {
-                res.send("Login Unsuccesful")
+                res.send('Login Unsuccesful Return  <a href='+'../'+'>Home</a>')
             }
         })
     })

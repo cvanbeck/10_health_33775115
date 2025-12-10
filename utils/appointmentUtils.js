@@ -31,12 +31,24 @@ function renderAppointments(req, res, next, id = -1) {
                     (appointments.patient_id = ? OR appointments.doctor_id = ?`;
     // Check if an id was specified, if so selects only that item 
     query += id === -1 ? ")" : ` AND appointments.id = ?)`;
+    
     const values = [req.session.user_id, req.session.user_id, id]
-    console.log(query)
     db.query(query, values, (err, result) => {
         if (err) return next(err);
         res.render("appointments.ejs", { appointments: result });
     });
 }
 
-module.exports = {seperateUsersByRole, renderAppointments}
+const cancelAppointment = (req, res, next, id, callback) => {
+    let query = `
+        UPDATE appointments
+        SET is_cancelled = 1
+        WHERE id = ?
+    `
+    db.query(query, id, (err, result) => {
+        if (err) return next(err);
+        callback()
+    })
+}
+
+module.exports = {seperateUsersByRole, renderAppointments, cancelAppointment}
