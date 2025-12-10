@@ -42,12 +42,12 @@ router.put("/cancel", (req, res, next) => {
 
 // List all appointments
 router.get("/", (req, res, next) => {
-    renderAppointments(res, next)
+    renderAppointments(req, res, next)
 })
 
 // List a specific one
 router.get("/:id", (req, res, next) => {
-    renderAppointments(res, next, req.params.id)
+    renderAppointments(req, res, next, req.params.id)
 })
 
 module.exports = router
