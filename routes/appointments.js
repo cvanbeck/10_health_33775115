@@ -1,5 +1,5 @@
 router = require("express").Router()
-const { seperateUsersByRole, renderAppointments, cancelAppointment } = require("../utils/appointmentUtils.js")
+const { seperateUsersByRole, getAppointments, cancelAppointment } = require("../utils/appointmentUtils.js")
 
 
 // Page to add new appointment
@@ -34,17 +34,23 @@ router.post("/add", (req, res, next) => {
 // Updates appointment to cancelled
 router.post("/cancel", (req, res, next) => {
     console.log(req.body.id)
-    res.render("cancelled.ejs")
+    cancelAppointment(next, req.body.id, () => {
+        res.render("cancelled.ejs")
+    })
 })
 
 // List all appointments
 router.get("/", (req, res, next) => {
-    renderAppointments(req, res, next)
+    getAppointments(req, res, next, -1, (appointments) => {
+        res.render("appointments.ejs", { appointments })
+    })
 })
 
 // List a specific one
 router.get("/:id", (req, res, next) => {
-    renderAppointments(req, res, next, req.params.id)
+    getAppointments(req, res, next, req.params.id, (appointments) => {
+        res.render("appointments.ejs", { appointments })
+    })
 })
 
 module.exports = router

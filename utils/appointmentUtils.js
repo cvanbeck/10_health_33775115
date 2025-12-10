@@ -12,7 +12,7 @@ function seperateUsersByRole(users) {
     return seperated;
 }
 
-function renderAppointments(req, res, next, id = -1) {
+function getAppointments(req, res, next, id, callback) {
     let query = `SELECT
                     appointments.id,
                     appointments.time,
@@ -35,7 +35,7 @@ function renderAppointments(req, res, next, id = -1) {
     const values = [req.session.user_id, req.session.user_id, id]
     db.query(query, values, (err, result) => {
         if (err) return next(err);
-        res.render("appointments.ejs", { appointments: result });
+        callback(result);
     });
 }
 
@@ -51,4 +51,4 @@ const cancelAppointment = (req, res, next, id, callback) => {
     })
 }
 
-module.exports = {seperateUsersByRole, renderAppointments, cancelAppointment}
+module.exports = {seperateUsersByRole, getAppointments, cancelAppointment}
