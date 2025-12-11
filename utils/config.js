@@ -7,7 +7,7 @@ const DB_USER = process.env.HEALTH_USER;
 const DB_PASSWORD = process.env.HEALTH_PASSWORD;
 const DB_NAME = process.env.HEALTH_NAME;
 
-
+console.log(DB_HOST, DB_USER, DB_NAME)
 //- Do I need to hide saltrounds?
 const SALT_ROUNDS = process.env.SALT_ROUNDS;
 
