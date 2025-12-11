@@ -5,9 +5,8 @@ const PORT = process.env.PORT || 8000;
 const DB_HOST = process.env.HEALTH_HOST;
 const DB_USER = process.env.HEALTH_USER;
 const DB_PASSWORD = process.env.HEALTH_PASSWORD;
-const DB_NAME = process.env.HEALTH_NAME;
+const DB_NAME = process.env.HEALTH_DATABASE;
 
-console.log(DB_HOST, DB_USER, DB_NAME)
 //- Do I need to hide saltrounds?
 const SALT_ROUNDS = process.env.SALT_ROUNDS;
 
