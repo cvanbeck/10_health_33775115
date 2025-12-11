@@ -1,6 +1,6 @@
 const express = require("express");
-const mysql = require("mysql2");
 const config = require("./utils/config")
+const mysql = require("mysql2");
 const ejs = require("ejs");
 const path = require("path")
 const mainRoutes = require("./routes/main")
