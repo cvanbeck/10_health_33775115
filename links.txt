@@ -1,0 +1,10 @@
+home=https://www.doc.gold.ac.uk/usr/196/
+
+about=https://doc.gold.ac.uk/usr/196/about
+
+login=https://doc.gold.ac.uk/usr/196/auth/login
+register=https://doc.gold.ac.uk/usr/196/auth/register
+
+search=https://doc.gold.ac.uk/usr/196/appointments/search
+create_appointment=https://doc.gold.ac.uk/usr/196/appointments/add
+appointments=https://doc.gold.ac.uk/usr/196/appointments
